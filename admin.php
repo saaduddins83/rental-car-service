@@ -185,7 +185,7 @@ if (!isset($_SESSION['email'])) {
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="phone_number">Phone Number:</label>
-                                    <input type="tel" class="form-control" name="phone_number" required>
+                                    <input type="number" class="form-control" name="phone_number" required>
                                 </div>
                             </div>
 
