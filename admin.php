@@ -211,11 +211,11 @@ if (!isset($_SESSION['email'])) {
 
 
                                         <?php
-                                        $sql = "SELECT DISTINCT car_name FROM car";
+                                        $sql = "SELECT DISTINCT car_name,car_id FROM car";
                                         $select_res = mysqli_query($con, $sql);
                                         while ($show = mysqli_fetch_assoc($select_res)) {
                                             $carName = $show["car_name"];
-                                            echo '<option value="' . $carName . '">' . $carName . '</option>';
+                                            echo '<option value="' . $show["car_id"] . '">' . $carName . '</option>';
                                         }
 
                                         ?>
@@ -360,18 +360,16 @@ if (!isset($_SESSION['email'])) {
         $advance = $_POST["advance"];
         $balance = $_POST["balance"];
 
-
         $booking_query = "INSERT INTO `booking`(`car_id`, `c_fname`, `c_lname`, `email`, `phone`, `pickup_date`, `return_date`, `select_car`, `total_cost`, `advance`, `balance`) VALUES ('$select_car','$first_name','$last_name','$email',' $phone','$pick_date','$return_date','$select_car','$total_cost','$advance','$balance')";
 
-
         mysqli_query($con, $booking_query);
-        // echo "<script>alert('Booking Submitted')</script>";
+         echo "<script>alert('Booking Submitted')</script>";
     }
 
-    // $vars = array_keys(get_defined_vars());
-    // foreach ($vars as $var) {
-    //     unset(${"$var"});
-    // }
+    $vars = array_keys(get_defined_vars());
+    foreach ($vars as $var) {
+        unset(${"$var"});
+    }
 }
 // else{echo "<script>alert('user logged out');
 //     window.location.href = 'login.php';</script>";}
